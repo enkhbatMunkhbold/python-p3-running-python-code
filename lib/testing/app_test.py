@@ -23,10 +23,13 @@ class TestAppPy:
 
     def test_prints_hello_world(self):
         '''
-        prints "Hello World! Pass this test, please."
+        prints("Hello World! Pass this test, please.")
         '''
         captured_out = io.StringIO()
         sys.stdout = captured_out
         runpy.run_path("lib/app.py")
         sys.stdout = sys.__stdout__
         assert(captured_out.getvalue() == "Hello World! Pass this test, please.\n")
+
+    def test_app_py_exists():
+        assert(path.exists("lib/testing/app_test.py"))
